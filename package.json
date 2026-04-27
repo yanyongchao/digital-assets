@@ -1,0 +1,22 @@
+{
+  "name": "digital",
+  "private": true,
+  "version": "1.0.0",
+  "packageManager": "pnpm@10.8.1",
+  "scripts": {
+    "dev:front": "pnpm --filter digital-front dev",
+    "build:front": "pnpm --filter digital-front build",
+    "lint:front": "pnpm --filter digital-front lint",
+    "preview:front": "pnpm --filter digital-front preview",
+    "dev:server": "pnpm --filter ./packages/digital-server start:dev",
+    "build:server": "pnpm --filter ./packages/digital-server build",
+    "start:server": "pnpm --filter ./packages/digital-server start:prod",
+    "check:server": "pnpm --filter ./packages/digital-server check",
+    "test:server": "pnpm --filter ./packages/digital-server test",
+    "db:generate:server": "pnpm --filter ./packages/digital-server db:generate",
+    "db:migrate:server": "pnpm --filter ./packages/digital-server db:migrate",
+    "db:deploy:server": "pnpm --filter ./packages/digital-server db:deploy",
+    "db:seed:server": "pnpm --filter ./packages/digital-server db:seed",
+    "db:studio:server": "pnpm --filter ./packages/digital-server db:studio"
+  }
+}
