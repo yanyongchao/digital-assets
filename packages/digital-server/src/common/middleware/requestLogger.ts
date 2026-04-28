@@ -1,6 +1,7 @@
 import { randomUUID } from "node:crypto";
 import { mkdirSync } from "node:fs";
 import { join } from "node:path";
+import dayjs from "dayjs";
 import type { NextFunction, Request, Response } from "express";
 import { StatusCodes } from "http-status-codes";
 import pino from "pino";
@@ -8,6 +9,8 @@ import pinoHttp from "pino-http";
 import { createStream } from "rotating-file-stream";
 
 import { env } from "@/common/utils/envConfig";
+
+const getPinoTimestamp = () => `,"time":"${dayjs().format("YYYY-MM-DD HH:mm:ss")}"`;
 
 const formatDate = (dateInput: Date | number) => {
 	const date = dateInput instanceof Date ? dateInput : new Date(dateInput);
@@ -18,10 +21,6 @@ const formatDate = (dateInput: Date | number) => {
 };
 
 const createLogger = () => {
-	if (env.isTest) {
-		return pino({ enabled: false });
-	}
-
 	const logDirectory = join(process.cwd(), "logs");
 	mkdirSync(logDirectory, { recursive: true });
 
@@ -50,6 +49,7 @@ const createLogger = () => {
 	return pino(
 		{
 			level: env.isProduction ? "info" : "debug",
+			timestamp: getPinoTimestamp,
 		},
 		pino.multistream(streams),
 	);
@@ -111,6 +111,22 @@ const httpLogger = pinoHttp({
 			url: req.url,
 			id: req.id,
 		}),
+		res: (res) => {
+			const response = res as { statusCode?: number; headers?: Record<string, unknown> };
+			const contentTypeHeader = response.headers?.["content-type"];
+			const contentType = Array.isArray(contentTypeHeader)
+				? contentTypeHeader.join(",")
+				: typeof contentTypeHeader === "string"
+					? contentTypeHeader
+					: undefined;
+
+			return {
+				statusCode: response.statusCode,
+				headers: {
+					"content-type": contentType,
+				},
+			};
+		},
 	},
 });
 
