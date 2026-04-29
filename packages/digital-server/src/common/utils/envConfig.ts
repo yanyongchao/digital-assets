@@ -4,6 +4,13 @@ import { z } from "zod";
 const currentNodeEnv = process.env.NODE_ENV ?? "development";
 dotenv.config({ path: `.env.${currentNodeEnv}` });
 
+const envBoolean = z.preprocess((value) => {
+	if (typeof value === "string") {
+		return ["1", "true", "yes", "on"].includes(value.toLowerCase());
+	}
+	return value;
+}, z.boolean());
+
 const envSchema = z.object({
 	NODE_ENV: z.enum(["development", "production", "test"]).default("production"),
 
@@ -18,6 +25,10 @@ const envSchema = z.object({
 	COMMON_RATE_LIMIT_MAX_REQUESTS: z.coerce.number().int().positive().default(1000),
 
 	COMMON_RATE_LIMIT_WINDOW_MS: z.coerce.number().int().positive().default(1000),
+
+	REDIS_ENABLED: envBoolean.default(false),
+
+	REDIS_URL: z.string().url().default("redis://localhost:6379"),
 });
 
 const parsedEnv = envSchema.safeParse(process.env);
