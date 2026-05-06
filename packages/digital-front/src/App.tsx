@@ -129,7 +129,7 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="grid grid-cols-4 gap-[8px] md:col-span-2">
+      <section className="grid grid-cols-4 gap-2 md:col-span-2">
         {quickEntries.map((entry) => (
           <button
             key={entry}

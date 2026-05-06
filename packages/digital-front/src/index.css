@@ -2,7 +2,7 @@
 
 :root {
   min-height: 100svh;
-  font-size: clamp(14px, calc(100vw / 375 * 16), 18px);
+  font-size: clamp(14px, calc(100vmin / 375 * 16), 18px);
   font-family: "Avenir Next", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
   line-height: 1.45;
   color: #243b53;
