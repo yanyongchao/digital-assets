@@ -4,36 +4,47 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* shadcn-style semantic tokens */
-  --background: oklch(0.95 0.015 80);
-  --foreground: oklch(0.32 0.03 245);
-  --card: oklch(0.98 0.01 80);
-  --card-foreground: oklch(0.32 0.03 245);
-  --popover: oklch(0.98 0.01 80);
-  --popover-foreground: oklch(0.32 0.03 245);
-  --primary: oklch(0.72 0.07 72);
-  --primary-foreground: oklch(0.98 0.005 80);
-  --secondary: oklch(0.9 0.015 78);
-  --secondary-foreground: oklch(0.32 0.03 245);
-  --muted: oklch(0.88 0.01 78);
-  --muted-foreground: oklch(0.5 0.02 250);
-  --accent: oklch(0.86 0.02 76);
-  --accent-foreground: oklch(0.32 0.03 245);
-  --destructive: oklch(0.63 0.23 28);
-  --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(0.83 0.01 78);
-  --input: oklch(0.83 0.01 78);
-  --ring: oklch(0.72 0.07 72);
-  --primary-light: oklch(0.94 0.02 74);
-  --primary-disabled: oklch(0.82 0.03 74);
-  --primary-tap: oklch(0.65 0.08 72);
-  --radius: 0.75rem;
+  /* ── 主色调 Primary ── */
+  --primary: #be9866; /* 主按钮、链接、强调色 */
+  --primary-light: #be9866; /* 辅色 */
 
-  /* antd-mobile mapping */
-  --adm-color-primary: var(--primary);
-  --adm-color-primary-light: var(--primary-light);
-  --adm-color-primary-disabled: var(--primary-disabled);
-  --adm-color-primary-tap: var(--primary-tap);
+  --background: #f5f5f5; /* 页面背景 */
+
+  --title: #1b1b1b; /* 标题文字 */
+  --main: #262626; /* 正文文字 */
+  --secondary: #71717a; /* 次要文字 */
+  --placeholder: #a4abb8; /* 输入框 placeholder */
+  --disabled: #cccccc; /* 禁用状态 */
+
+  --success: #16a34a; /* 成功状态 */
+  --destructive: #7C221F; /* 破坏性操作 */
+  --orange: #f59e0b; /* 警告状态 */
+  --purple: #8b5cf6; /* 强调色 */
+
+  /* ── 边框/分割线 Border ── */
+  --border: #eee; /* 默认边框颜色 */
+  --input: #bdc1c6; /* 输入框边框 */
+  --ring: #be9866; /* Focus 环颜色 */
+
+  /* ── 卡片 Card ── */
+  --card: #fafafa; /* 卡片背景 */
+  --card-foreground: #0f172a; /* 卡片内文字 */
+
+  /* ── 弹出层 Popover ── */
+  --popover: #ffffff; /* 弹出层、下拉背景 */
+  --popover-foreground: #0f172a;
+
+  /* ── 圆角 Radius ── */
+  --radius: 8px; /* 全局默认圆角 */
+
+  /* ── 遮罩 Overlay ── */
+  --overlay: rgba(0, 0, 0, 0.5); /* 模态遮罩层 */
+
+  /* antd-mobile 映射：保证组件库颜色与语义化品牌色一致 */
+  --adm-color-primary: var(--primary); /* antd-mobile 默认主色 */
+  --adm-color-primary-light: var(--primary-light); /* antd-mobile 浅主色 */
+  --adm-color-primary-disabled: var(--disabled); /* antd-mobile 禁用主色 */
+  --adm-color-primary-tap: var(--primary); /* antd-mobile 按压主色 */
   --safe-top: env(safe-area-inset-top, 0px);
   --safe-right: env(safe-area-inset-right, 0px);
   --safe-bottom: env(safe-area-inset-bottom, 0px);
@@ -52,34 +63,50 @@ html {
 }
 
 @theme inline {
+  /* 背景 */
   --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
+
+  /* 主色 */
   --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-light: var(--primary-light);
+
+  /* 文字 */
+  --color-title: var(--title);
+  --color-main: var(--main);
   --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
+  --color-placeholder: var(--placeholder);
+  --color-disabled: var(--disabled);
+
+  /* 状态色 */
+  --color-success: var(--success);
   --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
+  --color-orange: var(--orange);
+  --color-purple: var(--purple);
+
+  /* 边框/输入/环 */
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
+
+  /* 卡片 */
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  /* 弹出层 */
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  /* 遮罩 */
+  --color-overlay: var(--overlay);
+
+  /* 圆角 */
+  --radius-default: var(--radius);
 }
 
 body {
   margin: 0;
   min-width: 320px;
   min-height: 100svh;
-  color: var(--foreground);
+  color: var(--main);
   background: var(--background);
 }
