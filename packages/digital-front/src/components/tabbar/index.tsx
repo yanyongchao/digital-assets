@@ -58,8 +58,8 @@ export default function TabBar({
   items = defaultItems,
   onChange,
   className = "",
-  activeColor = "#BE9866",
-  inactiveColor = "#1B1B1B",
+  activeColor = "#1B1B1B",
+  inactiveColor = "#888888",
 }: TabBarProps) {
   const style = {
     "--tab-active-color": activeColor,
@@ -71,12 +71,12 @@ export default function TabBar({
     <nav
       aria-label="底部导航"
       style={style}
-      className={`h-[56px] w-full bg-white px-[8px] shadow-[inset_0_1px_0_rgba(255,255,255,1),0_5px_15px_rgba(0,0,0,0.03)] backdrop-blur-[20px] ${className}`}
+      className={`w-full flex h-[56px] items-center bg-white ${className}`}
     >
       <AntdTabBar
         activeKey={activeKey}
         onChange={(key) => onChange?.(key as TabBarItemKey)}
-        className="h-full"
+        className="flex-1"
       >
         {items.map((item) => {
           const active = item.key === activeKey;
