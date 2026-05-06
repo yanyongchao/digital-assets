@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
+  <!-- 底座横线 -->
+  <path d="M3 24H17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- 锤柄 -->
+  <path d="M9 19.5L15 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- 锤头上部 -->
+  <rect x="13.5" y="3.5" width="10" height="4.5" rx="1.5" transform="rotate(-30 13.5 3.5)" stroke="currentColor" stroke-width="1.5"/>
+  <!-- 锤头下部 -->
+  <rect x="8.5" y="11.5" width="10" height="4.5" rx="1.5" transform="rotate(-30 8.5 11.5)" stroke="currentColor" stroke-width="1.5"/>
+</svg>

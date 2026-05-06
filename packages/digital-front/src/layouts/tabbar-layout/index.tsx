@@ -33,7 +33,7 @@ export default function TabbarLayout() {
 
   return (
     <div
-      className="relative min-h-svh bg-[#f5f5f5]"
+      className="relative"
       style={
         { "--safe-bottom": "env(safe-area-inset-bottom)" } as CSSProperties
       }
