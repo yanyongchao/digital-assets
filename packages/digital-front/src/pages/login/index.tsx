@@ -7,7 +7,6 @@ export default function LoginPage() {
   const [email, setEmail] = useState("peterparker@dpop.site");
   const [code, setCode] = useState("");
   const [secondsLeft, setSecondsLeft] = useState(59);
-
   useEffect(() => {
     if (secondsLeft === 0) {
       return;
@@ -24,7 +23,7 @@ export default function LoginPage() {
     secondsLeft > 0 ? `重新发送验证码(${secondsLeft})` : "重新发送验证码";
 
   return (
-    <main className="min-h-svh">
+    <main className="min-h-svh bg-[#f5f5f5] pb-[calc(108px+var(--safe-bottom))]">
       <section className="mx-auto min-h-svh max-w-[480px] overflow-hidden bg-white shadow-[0_18px_60px_rgba(74,51,25,0.08)]">
         <div className="relative h-[403px] overflow-hidden bg-[#f8f5ef]">
           <img
